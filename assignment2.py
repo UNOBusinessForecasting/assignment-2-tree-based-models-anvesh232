@@ -12,7 +12,6 @@ from sklearn.model_selection import train_test_split
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.ensemble import RandomForestClassifier, GradientBoostingClassifier
 from sklearn.metrics import classification_report, accuracy_score
-import joblib
 
 df_train=pd.read_csv('https://raw.githubusercontent.com/UNOBusinessForecasting/assignment-2-tree-based-models-anvesh232/refs/heads/main/assignment2train.csv')
 df_test=pd.read_csv('https://raw.githubusercontent.com/UNOBusinessForecasting/assignment-2-tree-based-models-anvesh232/refs/heads/main/assignment2test.csv')
@@ -23,4 +22,4 @@ X_train, X_val, y_train, y_val = train_test_split(X, y, test_size=0.3, random_st
 model = RandomForestClassifier(random_state=42)
 modelFit = model.fit(X_train, y_train)
 pred_binary = [1 if p == True else 0 for p in pred]
-val_pred = modelFit.predict(X_val)
+pred = modelFit.predict(X_val)
