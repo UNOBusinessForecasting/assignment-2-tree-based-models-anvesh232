@@ -21,4 +21,7 @@ y = df_train['meal']
 X_train, X_val, y_train, y_val = train_test_split(X, y, test_size=0.3, random_state=50)
 model = RandomForestClassifier(n_estimators=50, n_jobs = -1, random_state=50)
 modelFit = model.fit(X_train, y_train)
-pred = modelFit.predict(X_val)
+
+X_test = df_test.drop(columns=['id', 'DateTime', 'meal'])
+X_test = X_test[X_train.columns]  # Match test columns to the training set
+pred = modelFit.predict(X_test)
